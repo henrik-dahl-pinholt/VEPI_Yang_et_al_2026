@@ -14,7 +14,7 @@ python scripts/download_repro_assets.py
 python scripts/check_figures.py
 ```
 
-The downloader reads `repro_assets_manifest.json`, downloads the release archives, verifies their SHA256 hashes, and extracts them into the local `Data`, `cache`, and `result` directories. `scripts/check_figures.py` then regenerates the figure PDFs from those local files and verifies that the expected outputs exist.
+The downloader reads `repro_assets_manifest.json`, downloads the release archives, verifies their SHA256 hashes, and extracts them into the local `Data`, `cache`, and `result` directories. `scripts/check_figures.py` then regenerates the figure PDFs from those local files and verifies that the expected outputs exist. Note that this will extract ~15Gb onto your disk, so make sure you are ready for that. 
 
 The release tag used by the manifest is `repro-assets-v1`. The generated archives are staged in `release_assets/repro-assets-v1`, which is intentionally ignored by Git.
 
@@ -30,6 +30,7 @@ The folders in the repository contain the following:
     - VEPI module for doing Variational Inference on MS2 data.
 - TwoLocusGPR
     - VEPI module for doing Gaussian Process Regression on two-locus tracking data.
+
 ## Note on plots
 You may find that plots do not look as formatted in the paper. This is because the pdfs were formatted in Affinity Designer before being included in the figure. 
 We stress that the information in the output figures here is equal to that in the paper. 
