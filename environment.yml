@@ -1,0 +1,32 @@
+# Minimal environment for reproducing figures in VEPI_Yang_et_al_2026.
+#
+# Developed/tested on linux-64 with Python 3.12.2. The base environment used
+# while preparing this repository had:
+#   numpy 1.26.4
+#   scipy 1.16.3
+#   jax/jaxlib 0.4.38
+#   matplotlib 3.11.0
+#   pandas 1.4.3
+#   h5py 3.12.1
+#   tqdm 4.66.5
+#   scikit-learn 1.6.1
+#
+# The environment below intentionally omits unrelated packages from that base
+# environment. It installs CPU JAX by default, which is sufficient for the
+# cached figure-regeneration workflow.
+name: vepi-yang-2026
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12.2
+  - pip
+  - numpy=1.26
+  - scipy>=1.15,<1.17
+  - pandas>=1.4,<3
+  - h5py>=3.12,<4
+  - matplotlib>=3.10,<3.12
+  - scikit-learn>=1.6,<1.7
+  - tqdm>=4.66,<5
+  - pip:
+      - "jax[cpu]==0.4.38"

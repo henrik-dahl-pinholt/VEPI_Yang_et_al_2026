@@ -6,7 +6,17 @@ The repository uses cached computations for intermediate results so a user will 
 
 ## Reproducing figures from a fresh clone
 
-After cloning the repository. You still need the large-size cached computations if you do not intend to resimulate/infer everything from scratch. 
+Create and activate the conda environment:
+
+```bash
+conda env create -f environment.yml
+conda activate vepi-yang-2026
+python --version
+```
+
+This repository was prepared and tested with Python 3.12.2. The environment file uses a minimal set of packages needed by the scripts and notebooks that regenerate the figures. It installs CPU JAX by default, which is sufficient for reproducing figures from the cached release assets. GPU JAX can be installed separately if you plan to rerun heavy inference rather than only regenerate plots.
+
+After cloning the repository, you still need the large-size cached computations if you do not intend to resimulate/infer everything from scratch.
 These have been stored as release assets, allowing you to download and regenerate all figure plots using:
 
 ```bash
