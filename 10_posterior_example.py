@@ -336,7 +336,7 @@ def load_or_sample_polymerase_trace():
 
 std = np.std(S, axis=0)
 
-start_time = 160
+start_time = 150
 duration = 74
 fig = plt.figure(figsize=(5.0, 10))
 # make ax0 and ax3 lie on a marger of the first two and last tworows in a 6x1 grid and ax1,ax2 take the rows 3 and 4. use gridspec
