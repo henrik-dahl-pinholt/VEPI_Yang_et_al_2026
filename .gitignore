@@ -1,0 +1,12 @@
+.repro_check/
+.repro_assets/
+release_assets/
+__pycache__/
+*.pyc
+
+Data/*
+!Data/.gitkeep
+cache/*
+!cache/.gitkeep
+result/*
+!result/.gitkeep

@@ -1,0 +1,63 @@
+% Generated from:
+% result/1_MS2_corrfit/fit_raw_intensity_0341338401d33fe53cf19f91401d8dac_summary.json
+% Fit script:
+% 1_MS2_corrfit.py
+% Inference comparison from:
+% result/2_run_inference/*/None/30s_*_model_results.npz
+% Requires \usepackage{booktabs}.
+\begin{table}[tbp]
+\centering
+\caption{Fit results for the raw-intensity MS2 autocovariance model compared with the corresponding 30 s untreated MS2Posterior inference summaries. Rates and kernel times are in minutes because the fit uses 30 s sampling converted to $\Delta t=0.5$ min. The best autocovariance-fit solution was restart 45 of 50, with objective value 563.44.}
+\label{tab:ms2-corrfit-raw-intensity}
+\begin{tabular}{llrr}
+\toprule
+\multicolumn{4}{l}{\textbf{Global parameters}} \\
+\midrule
+Parameter & Meaning & Corrfit & Inference \\
+\midrule
+$k_{\mathrm{off}}$ & off rate (min$^{-1}$) & 0.02098 & 0.01747 \\
+$r_{\mathrm{load}}$ & active-state loading rate (min$^{-1}$) & 0.6967 & 0.6142 \\
+$c_v$ & loading-rate coefficient of variation & 0.7488 & 0.6599 \\
+$T_{\max}$ & total MS2 kernel duration (min) & 6.511 & 6.511 \\
+$T_{\mathrm{frac}}$ & rise-time fraction & 0.07001 & 0.07001 \\
+$T_{\mathrm{rise}}$ & MS2 kernel rise time (min) & 0.4558 & 0.4558 \\
+$T_{\mathrm{plateau}}$ & MS2 kernel plateau time (min) & 6.055 & 6.055 \\
+$I_{\mathrm{RNA}}$ & intensity per loaded polymerase (AU) & 3.319 & 3.319 \\
+$I_0$ & mean-intensity offset (AU) & 1.620 & 1.620 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+\begin{tabular}{lrrrr}
+\toprule
+\multicolumn{5}{l}{\textbf{Condition-specific parameters}} \\
+\midrule
+& \multicolumn{2}{c}{$k_{\mathrm{on}}$ (min$^{-1}$)} & \multicolumn{2}{c}{$\sigma_{\mathrm{obs}}$ (AU)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Condition & Corrfit & Inference & Corrfit & Inference \\
+\midrule
+1.5noC & 0.04063 & 0.02135 & 3.032 & 6.122 \\
+339CECP & 0.003720 & 0.02499 & 4.762 & 4.562 \\
+87noC & 0.002901 & 0.01017 & 0.06430 & 3.134 \\
+170noC & 0.002436 & 0.008266 & 0.6398 & 3.028 \\
+339CE & 0.001592 & 0.009537 & 0.7089 & 2.933 \\
+253noC & 0.0009771 & 0.008961 & 2.048 & 3.511 \\
+339CP & 0.0007465 & 0.008958 & 2.359 & 4.711 \\
+330noC & 0.0006795 & 0.007550 & 1.873 & 3.065 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\begin{minipage}{0.97\linewidth}
+\footnotesize Inference summaries are from the base 30 s, untreated model results in
+the \texttt{2\_run\_inference} simulation-output tree. The inferred global
+$r_{\mathrm{load}}$ and
+$c_v$ pool the per-track active-state loading rates across all listed
+conditions; $c_v=\mathrm{sd}(r_{\mathrm{load,on}})/
+\mathrm{mean}(r_{\mathrm{load,on}})$. The inferred global $k_{\mathrm{off}}$
+is the track-count-weighted mean of condition-specific off rates. The inferred
+condition-specific $\sigma_{\mathrm{obs}}$ values are mean per-track noise
+estimates.
+\end{minipage}
+\end{table}
