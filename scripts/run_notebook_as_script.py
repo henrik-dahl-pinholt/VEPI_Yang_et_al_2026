@@ -37,9 +37,15 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     notebook_path = args.notebook.resolve()
-    for path in (Path.cwd().resolve(), notebook_path.parent):
+    repo_root = Path.cwd().resolve()
+    for path in (
+        repo_root / "MS2Posterior",
+        repo_root / "TwoLocusGPR",
+        repo_root,
+        notebook_path.parent,
+    ):
         path_text = str(path)
-        if path_text not in sys.path:
+        if path.exists() and path_text not in sys.path:
             sys.path.insert(0, path_text)
     script = notebook_to_python(notebook_path)
     if args.output_script is not None:
