@@ -17,6 +17,7 @@ DEFAULT_REPOSITORY = "henrik-dahl-pinholt/VEPI_Yang_et_al_2026"
 DEFAULT_SOURCES = ("Data", "cache", "result")
 DEFAULT_MAX_UNCOMPRESSED = int(1.5 * 1024**3)
 CHUNK_SIZE = 1024 * 1024
+SKIP_FILENAMES = {".gitkeep"}
 
 
 def sha256_file(path: Path) -> str:
@@ -34,7 +35,11 @@ def iter_source_files(source_dirs: list[str]) -> list[tuple[Path, int]]:
         if not root.exists():
             continue
         for path in sorted(root.rglob("*")):
-            if path.is_file() and "__pycache__" not in path.parts:
+            if (
+                path.is_file()
+                and "__pycache__" not in path.parts
+                and path.name not in SKIP_FILENAMES
+            ):
                 files.append((path, path.stat().st_size))
     return files
 

@@ -18,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "repro_assets_manifest.json"
 DEFAULT_DOWNLOAD_DIR = REPO_ROOT / ".repro_assets"
 CHUNK_SIZE = 1024 * 1024
+SKIP_ARCHIVE_MEMBERS = {"Data/.gitkeep", "cache/.gitkeep", "result/.gitkeep"}
 
 
 def sha256_file(path: Path) -> str:
@@ -64,7 +65,11 @@ def assert_safe_member(member: tarfile.TarInfo, dest_root: Path) -> None:
 
 def extract_archive(path: Path, dest_root: Path) -> None:
     with tarfile.open(path, "r:gz") as archive:
-        members = archive.getmembers()
+        members = [
+            member
+            for member in archive.getmembers()
+            if member.name not in SKIP_ARCHIVE_MEMBERS
+        ]
         for member in members:
             assert_safe_member(member, dest_root)
         archive.extractall(dest_root, members=members)
